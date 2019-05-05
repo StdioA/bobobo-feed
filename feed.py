@@ -1,4 +1,6 @@
+import xml.etree.ElementTree as ET
 from feedgen.feed import FeedGenerator
+from dateutil.parser import parse as dateparse
 
 
 class BlogFeed:
@@ -27,3 +29,13 @@ class BlogFeed:
 
     def save(self, path):
         self.fg.atom_file(path)
+
+    @classmethod
+    def get_atom_update_time(cls, path):
+        tree = ET.parse(path)
+        try:
+            updated = tree.findall(
+                "{http://www.w3.org/2005/Atom}updated")[0].text
+        except IndexError:
+            return None
+        return dateparse(updated)

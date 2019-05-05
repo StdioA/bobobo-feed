@@ -4,13 +4,14 @@ from functools import reduce
 from operator import attrgetter
 from urllib.parse import urljoin
 from markdown import markdown
+import constants
 
 
 class Article:
     date_re = re.compile(r"\d{4}-\d{1,2}-\d{1,2}")
     head_re = re.compile(r"\#+ ?(.+)")
-    url_base = "https://github.com/liuyubobobo/my-blog/blob/master/"
-    img_base = "https://github.com/liuyubobobo/my-blog/raw/master/"
+    url_base = constants.BLOG_URL_BASE
+    img_base = constants.BLOG_IMG_BASE
 
     def __init__(self, path):
         self.path = path
