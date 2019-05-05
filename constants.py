@@ -9,7 +9,8 @@ BLOG_CONF = {
 ATOM_CONF = {
     "path": "feed",
     "url": "https://github.com/liuyubobobo-blog/feed.git",
-    "push_url": "https://{}@github.com/liuyubobobo-blog/feed.git".format(GIT_TOKEN)
+    "push_url": "https://{}@github.com/liuyubobobo-blog/feed.git".format(
+        GIT_TOKEN)
 }
 
 BLOG_URL_BASE = "https://github.com/liuyubobobo/my-blog/blob/master/"
