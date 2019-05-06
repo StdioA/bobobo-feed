@@ -1,5 +1,4 @@
 import os
-import sys
 import constants
 from repos import GitRepo
 from blog_parser import BlogParser
@@ -19,7 +18,7 @@ def main():
     atom_updated = BlogFeed.get_atom_update_time(atom_path)
     if committed_at == atom_updated:
         print("Atom feed is up to date, exit.")
-        sys.exit(0)
+        return
 
     print("Generating atom.xml")
     feed = BlogFeed(committed_at)

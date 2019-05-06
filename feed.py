@@ -1,18 +1,21 @@
 import xml.etree.ElementTree as ET
 from feedgen.feed import FeedGenerator
 from dateutil.parser import parse as dateparse
+import constants
 
 
 class BlogFeed:
     def __init__(self, updated_at):
         self.fg = FeedGenerator()
-        self.fg.id("https://github.com/liuyubobobo/my-blog")
-        self.fg.author({
-            "name": "liuyubobobo",
-            "email": "liuyubobobo@gmail.com"
-        })
-        self.fg.title("是不是很酷")
-        self.fg.language("zh-CN")
+        meta = constants.ATOM_METADATA
+        self.fg.id(meta["id"])
+        self.fg.link(href=meta["id"], rel='alternate')
+        self.fg.author(meta["author"])
+        self.fg.icon(meta["icon"])
+        self.fg.title(meta["title"])
+        self.fg.subtitle(meta["subtitle"])
+        self.fg.language(meta["language"])
+        self.fg.generator(**meta["generator"])
         self.fg.updated(updated_at)
 
     def update(self, articles):
