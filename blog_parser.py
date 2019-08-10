@@ -70,7 +70,10 @@ class Article:
 
     @property
     def title(self):
-        return next(self.head_re.finditer(self.content)).group(1)
+        try:
+            return next(self.head_re.finditer(self.content)).group(1)
+        except StopIteration:
+            return "{} - 无题".format(self.date)
 
 
 class BlogParser:
