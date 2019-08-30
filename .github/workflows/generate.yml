@@ -3,7 +3,7 @@ name: Generate Atom feed
 on:
   push:
   schedule:
-    cron: "0 * * * *"
+    cron: "0/5 * * * *"
 
 jobs:
   build:
