@@ -1,7 +1,9 @@
-name: Generate on push
+name: Generate Atom feed
 
-on: 
-  - push
+on:
+  push:
+  schedule:
+    cron: "0 * * * *"
 
 jobs:
   build:
